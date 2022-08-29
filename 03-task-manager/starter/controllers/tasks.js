@@ -2,7 +2,6 @@
 
 const Task = require("../models/Tasks");
 
-
 const getAllTasks = (req, res) => {
   res.send("This is a controller for all tasks");
 };
@@ -12,21 +11,32 @@ const createTask = async (req, res) => {
     const task = await Task.create(req.body);
     res.status(201).json({ task });
   } catch (error) {
-    res.status(500).json({message:error})
+    res.status(500).json({ message: error });
   }
 };
 
-const getTask = (req, res) => {
-  res.json({ id: req.params.id });
+const getTask = async (req, res) => {
+  try {
+    const { id: taskID } = req.params;
+    const task = await Task.findOne({ _id: taskID });
+
+    if (!task) {
+      return res.status(404).json({ msg: `No task with id ${taskID}` });
+    }
+    
+    await res.status(200).json({ task });
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
 };
 
 const updateTask = (req, res) => {
   res.send("update a task");
 };
 
-// const deleteTask = (req, res) => {
-//   res.send("delete a task");
-// };
+const deleteTask = (req, res) => {
+  res.send("delete a task");
+};
 
 module.exports = {
   getAllTasks,
