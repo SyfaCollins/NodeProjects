@@ -1,5 +1,18 @@
 /** @format */
 
+/**
+ * The app.js primary file helps to connect our
+ * routes to the database with the help of the express
+ * framework
+ * 
+ * It pull the routes from the associated folder 
+ * It pulls the database model from the associated folder
+ * It Holds and async function the takes in two parameters
+ * the database URL and the port on which to listen on
+ *  
+ * 
+ */
+
 // console.log('Task Manager App')
 /**
  * Connect the database
@@ -10,7 +23,6 @@ const app = express();
 const tasks = require("./routes/tasks");
 const connectDB = require("./db/connect");
 require("dotenv").config();
-
 
 /**
  * middleware

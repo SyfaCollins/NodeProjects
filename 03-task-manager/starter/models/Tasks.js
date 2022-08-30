@@ -1,5 +1,13 @@
 /** @format */
-
+/**
+ * This is the last piece of the pizzle
+ * This is the architecture of the request
+ * also known as the schema.
+ * 
+ * It holds a calls in a mongoose library that
+ * helps in building the pieces and validation 
+ *
+ */
 const mongoose = require("mongoose");
 
 const TaskSchema = new mongoose.Schema({
